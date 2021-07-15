@@ -25,6 +25,10 @@ install_arch () {
 	pacstrap /mnt $(cat pacstrap_install)
 }
 
+post_install () {
+	genfstab -U /mnt >> /mnt/etc/fstab
+}
+
 echo "Performing pre install tasks..."
 pre_install
 echo "Done"
@@ -35,4 +39,8 @@ echo "Done"
 
 echo "Pacstrapping packages..."
 install_arch
+echo "Done"
+
+echo "Performing post install..."
+post_install
 echo "Done"
