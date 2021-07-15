@@ -18,10 +18,18 @@ prepare_partitions () {
 	mount $BOOT_PARTITION /mnt/boot
 }
 
+install_arch () {
+	pacstrap /mnt $(cat pacstrap_install)
+}
+
 echo "Performing pre install tasks..."
 pre_install
 echo "Done"
 
 echo "Preparing paritions..."
 prepare_partitions
+echo "Done"
+
+echo "Pacstrapping packages..."
+install_arch
 echo "Done"
