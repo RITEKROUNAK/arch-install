@@ -19,6 +19,9 @@ prepare_partitions () {
 }
 
 install_arch () {
+	echo "Enabling Parallel Download of 3..."
+	sed "s/#ParallelDownloads.*/ParallelDownloads = 3/g" /etc/pacman.conf > /etc/pacman.conf.new
+	cp /etc/pacman.conf.new /etc/pacman.conf
 	pacstrap /mnt $(cat pacstrap_install)
 }
 
