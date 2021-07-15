@@ -3,7 +3,7 @@ CITY=Kolkata
 HOSTNAME=archbox
 
 echo "Linking time zone: $REGION/$CITY"
-cat /usr/share/zoneinfo/$REGION/$CITY
+ln -sf /usr/share/zoneinfo/$REGION/$CITY /etc/localtime
 
 echo "Syncing hw clock"
 hwclock --systohc
